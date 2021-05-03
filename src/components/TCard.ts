@@ -65,14 +65,16 @@ const TCard = Component.extend({
         ));
       }
 
-      childs.push(createElement(
-        'div',
-        {
-          ref: 'body',
-          class: this.getElementCssClass('body'),
-        },
-        this.$slots.default,
-      ));
+      if (!!this.$slots.default) {
+        childs.push(createElement(
+          'div',
+          {
+            ref: 'body',
+            class: this.getElementCssClass('body'),
+          },
+          this.$slots.default,
+        ));
+      }
 
       if (!!this.$slots.footer || this.footer !== undefined) {
         childs.push(createElement(
